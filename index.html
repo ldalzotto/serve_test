@@ -1,0 +1,28 @@
+<script src="dst/rast89.js"></script>
+<body>
+  <canvas id="myCanvas" width="200" height="100"></canvas>
+</body>
+<script>
+  Module.onRuntimeInitialized = _ => {
+    // Module.HEAP8.set();
+    // let l_image_data = document.getElementById("myCanvas").getContext("2d").getImageData(0,0,200,100);
+    // conl_image_data.data();
+//     console.log(l_canvas)
+
+    const ren_allocate = Module.cwrap('emcc_ren_allocate', 'number', []);
+    const ren_free = Module.cwrap('emcc_ren_free', '', ['number']);
+
+    const l_ren = ren_allocate();
+    console.log(l_ren);
+    ren_free(l_ren);
+
+    /*
+    const fib = Module.cwrap('fib', 'number', ['number']);
+    const mmalloc = Module.cwrap('mmalloc', 'pointer', ['number']);
+    console.log(fib(12));
+    console.log(mmalloc(100));
+    */
+  };
+
+  
+</script>

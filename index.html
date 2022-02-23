@@ -9,10 +9,12 @@
     // conl_image_data.data();
 //     console.log(l_canvas)
 
+    l_div = document.createElement("div");
     const ren_allocate = Module.cwrap('emcc_ren_allocate', 'number', []);
     const ren_free = Module.cwrap('emcc_ren_free', '', ['number']);
 
     const l_ren = ren_allocate();
+    l_div.text = l_ren.toString();
     console.log(l_ren);
     ren_free(l_ren);
 

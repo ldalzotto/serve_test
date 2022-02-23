@@ -14,9 +14,11 @@
     const ren_free = Module.cwrap('emcc_ren_free', '', ['number']);
 
     const l_ren = ren_allocate();
-    l_div.text = l_ren.toString();
-    console.log(l_ren);
+    l_div.innerHTML = l_ren.toString();
+//    console.log(l_ren);
     ren_free(l_ren);
+
+    document.body.appendChild(l_div);
 
     /*
     const fib = Module.cwrap('fib', 'number', ['number']);
